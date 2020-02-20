@@ -1,0 +1,175 @@
+body {
+    background-image: url("../images/bg.jpg");
+    color: #333;
+    font-family: calibri;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-md {
+    margin-top: 30px;
+}
+
+.mb-md {
+    margin-bottom: 30px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+}
+
+.main-box {
+    border: 1px solid #d0d0d0;
+    padding: 20px;
+    background: #efefef;
+    border-radius: 5px;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.graph {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background: #fff;
+    position: relative;
+    display: none;
+}
+
+.bubble-box {
+    text-align: center;
+    padding: 10px;
+    width: 76px;
+    height: 38px;
+    border-radius: 38px / 19px;
+    background: #000;
+    opacity: 0.5;
+    color: #fff;
+}
+
+.rectangle-box {
+    text-align: center;
+    padding: 10px;
+    width: 100px;
+    margin: auto;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    text-transform: capitalize;
+    opacity: 0.8;
+    border-radius: 5px;
+    position: relative;
+    left: -5px;
+}
+
+.graph-level-div {
+    padding: 5px;
+}
+
+.level-0 {
+    width: 150px;
+    margin: 30px auto 30px;
+}
+
+.level-up-1, .level-down-1 {
+    width: 300px;
+    margin: 30px auto 30px;
+}
+
+.level-up-2, .level-down-2 {
+    width: 450px;
+    margin: 30px auto 30px;
+}
+
+.line {
+    border-top: 3px dotted rgba(0,0,0,0.5);
+    width: 97px;
+    position: absolute;
+}
+
+.line-1 {
+    top: 113px;
+    left: 155px;
+    transform: rotate(25deg);
+}
+
+.line-2 {
+    top: 113px;
+    left: 268px;
+    transform: rotate(-25deg);
+}
+
+.line-3 {
+    top: 195px;
+    left: 155px;
+    transform: rotate(-25deg);
+}
+
+.line-4 {
+    top: 195px;
+    left: 268px;
+    transform: rotate(25deg);
+}
+
+.progress-log {
+    background: #fff;
+    font-size: 20px;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.text-box {
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    color: #333;
+    border: 1px solid #bbb;
+    margin-bottom: 20px;
+}
+
+.hyponym-item {
+    margin: 5px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+.hyponym-item:hover {
+    background: #ddd;
+}
+
+.hyponym-item.active {
+    background: #ddd;
+}
+
+#hyponym-list-box {
+  display: none;
+}
+
+#edit_target_graph_modal ul{
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e0e0e0;
+  color: #333;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+}
+
+#edit_target_graph_modal ul li {
+  float: left;
+  border-right: 2px dotted #333;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#edit_target_graph_modal ul li:hover {
+  background: #d0d0d0;
+}

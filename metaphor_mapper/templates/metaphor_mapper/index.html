@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Metaphor Mapper</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}" />
+</head>
+
+<body>
+    <input type="hidden" id="sourceWordListContainer" />
+    <input type="hidden" id="selected_hyponym_term" />
+    <input type="hidden" id="selected_hyponyms_listContainer" />
+    <div style="display:none" id="targetWordListContainer"></div>
+    <div class="container">
+        <div class="row mt-md main-box">
+            <h1 class="header">Metaphor Mapper</h1>
+            <div class="col-sm" style="margin: 10px;">
+                <button class="btn btn-lg btn-default" data-toggle="modal" data-target="#filterModal"><i
+                        class="fas fa-filter"></i>&nbsp;Filters</button>
+                <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="exampleModalLabel">Choose Filters</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="source">Source</label>
+                                        <select class="form-control" id="source_dict_type">
+                                            <option value="w">Word-Net</option>
+                                            <option value="c">Concept-Net</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Done!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" placeholder="Enter a Source Token" class="text-box" id="source-term" />
+                <span style="color:gray; font-style:italic;font-size: 14px;">Suggested Tokens</span>
+                <div id="suggest-item-box"></div>
+                <div style="margin-top: 20px;padding-top:10px; border-top: 1px solid #d0d0d0;">
+                    {% csrf_token %}
+                    <div id="hyponym-list-box" style="padding: 15px 10px"></div>
+                    <button id="draw-source-graph" class="btn btn-lg btn-block btn-success"><i
+                            class="fas fa-paint-brush"></i>&nbsp;Draw Source
+                        Graph</button>
+                </div>
+                <div class="left-graph graph mt-md"></div>
+            </div>
+            <div class="col-sm-6" style="height: 700px; border-left: 1px solid #d0d0d0">
+                <div>
+                    <input type="text" id="target-term-input" placeholder="Enter Domain Token" class="text-box" />
+                    <div class="row" style="padding: 10px 0">
+                      <div class="col-md-7">
+                        <select class="form-control" id="selected_data_set">
+                            <option value="glove.twitter.27B.50d.txt.word2vec">Twitter 1.2M 50D</option>
+                            <option value="glove.6B.50d.txt.word2vec">Wikipedia 400k 50D</option>
+                            <option value="GoogleNews-vectors-negative300.bin">Google News 3M 300D</option>
+                        </select>
+                      </div>
+                      <div class="col-md-5">
+                        <button id="load-dataset" class="btn btn-block btn-danger" style="position:relative;top:-5px;"><i class="fas fa-database"></i>&nbsp;&nbsp;Load Dataset</button>
+                      </div>
+                      <div class="col-md-12">
+                        <span id="dataset_load_status" style="color:red">No Dataset has been loaded yet</span>
+                      </div>
+                    </div>
+
+                    <button id="draw-target-graph" class="btn btn-lg btn-block btn-primary"><i class="fas fa-sitemap"></i>&nbsp;
+                        Map</button>
+                    <!--<div class="progress-log"><b>Status:</b>&nbsp;Finished Successfully!!</div>-->
+                    <div class="graph right-graph" style="margin-top: 52px;"></div>
+                    <button id="edit-target-graph" style="display: none;margin-top:10px;" data-toggle="modal" data-target="#edit_target_graph_modal" class="btn btn-primary">Edit</button>
+                    <div class="modal fade" id="edit_target_graph_modal" tabindex="-1" role="dialog"
+                        aria-hidden="true">
+                        <div class="modal-dialog" style="width:750px;" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Edit Target Graph</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                  ---
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Done!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/scripts.js ' %}"></script>
+    <script>
+    </script>
+</body>
+
+</html>

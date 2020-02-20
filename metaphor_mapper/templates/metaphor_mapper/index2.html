@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>{{posts}}</h1>
+        <form id="test_form" action="/external/" method="POST">
+            {% csrf_token %}
+            Input Text:
+            <input type="text" id="name" required /><br>
+            <input type="submit" value="Run Python" />
+        </form>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).on('submit', '#test_form', function(e) {
+                e.preventDefault()
+                $.ajax({
+                    type: 'POST',
+                    url: 'create/',
+                    data: {
+                        name: $('#name').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                    },
+                    success: function(data) {
+                        console.log(data)
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
